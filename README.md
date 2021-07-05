@@ -4,6 +4,7 @@ A login page done during Raro Academy course, as the third assignment (LevelUP3)
 ## About the application
 
 This project consists of a sign in page, sign up page and a forgot password page.
+
 <img src="./images/Login.gif" height = "500">
 
 ## Functionalities
