@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_sample/src/login/login_widget.dart';
+import 'package:login_sample/src/main/main_controller.dart';
 import 'package:login_sample/src/shared/utils/app_colors.dart';
 import 'package:login_sample/src/signup/signup_widget.dart';
 
@@ -11,6 +12,16 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
+  MainController controller = MainController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.stackChildren.add(SignupWidget());
+    controller.stackChildren.add(LoginWidget());
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,13 +35,30 @@ class _MainScreenState extends State<MainScreen> {
               Positioned(
                 top: 110,
                 left: 30,
-                child: SignupWidget(),
+                child: GestureDetector(
+                  onTap: () {
+                    controller.swapOrder();
+                    controller.swapColor();
+                    setState(() {});
+                  },
+                  child: controller.stackChildren[0],
+                ),
               ),
               Positioned(
                 right: 30,
                 top: 180,
-                child: LoginWidget(),
+                child: controller.stackChildren[1],
               ),
+              // Positioned(
+              //   top: 110,
+              //   left: 30,
+              //   child: SignupWidget(),
+              // ),
+              // Positioned(
+              //   right: 30,
+              //   top: 180,
+              //   child: LoginWidget(),
+              // ),
               Positioned(
                 bottom: 90,
                 right: 50,
@@ -38,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                   height: 80,
                   width: 80,
                   decoration: BoxDecoration(
-                    color: AppColors.cyan,
+                    color: controller.buttonColor,
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
