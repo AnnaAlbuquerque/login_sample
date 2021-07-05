@@ -12,12 +12,4 @@ class MainController {
     stackChildren.removeAt(0);
     stackChildren.add(_first);
   }
-
-  void swapColor() {
-    if (buttonColor == AppColors.cyan) {
-      buttonColor = AppColors.darkBlue;
-    } else {
-      buttonColor = AppColors.cyan;
-    }
-  }
 }

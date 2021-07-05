@@ -38,7 +38,6 @@ class _MainScreenState extends State<MainScreen> {
                 child: GestureDetector(
                   onTap: () {
                     controller.swapOrder();
-                    controller.swapColor();
                     setState(() {});
                   },
                   child: controller.stackChildren[0],
@@ -59,26 +58,6 @@ class _MainScreenState extends State<MainScreen> {
               //   top: 180,
               //   child: LoginWidget(),
               // ),
-              Positioned(
-                bottom: 90,
-                right: 50,
-                child: Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    color: controller.buttonColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: AppColors.white,
-                      size: 35,
-                    ),
-                  ),
-                ),
-              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
